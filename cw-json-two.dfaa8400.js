@@ -1,0 +1,9 @@
+let t=document.querySelector("#bookmarkInput"),e=document.querySelector("button"),l=document.querySelector("ul"),u=[];function i(){l.innerHTML=u.map((t,e)=>`
+            <li class="item" data-idx="${e}">
+                <input type="text" class="edit-input" value="${t}" style="display:none" />
+                <a href="${t}" target="_blank" class="link">${t}</a>
+                <button type="button" class="delete">Delete</button>
+                <button type="button" class="edit">Edit</button>
+            </li>
+        `).join("")}t.value="",e.addEventListener("click",function(e){let l=t.value.trim();"BUTTON"===e.target.nodeName&&(l&&l.includes("https://")?(u.push(l),i()):l||l.includes("https://")||(t.placeholder=`\u{412}\u{432}\u{435}\u{434}\u{456}\u{442}\u{44C} \u{43F}\u{440}\u{430}\u{432}\u{438}\u{43B}\u{44C}\u{43D}\u{435} \u{43F}\u{43E}\u{441}\u{438}\u{43B}\u{430}\u{43D}\u{43D}\u{44F}!`),t.value="")}),l.addEventListener("click",function(e){if(t.placeholder="URL",e.target.classList.contains("delete")){let t=e.target.closest("li");if(!t)return;let l=Number(t.dataset.idx);u.splice(l,1),i()}if(e.target.classList.contains("edit")){let t=e.target.closest("li");if(!t)return;let l=t.querySelector(".link"),u=t.querySelector(".edit-input");l.style.display="none",u.style.display="inline-block",e.target.textContent="Save",e.target.classList.remove("edit"),e.target.classList.add("save");return}if(e.target.classList.contains("save")){let t=e.target.closest("li");if(!t)return;let l=Number(t.dataset.idx),i=t.querySelector(".link"),s=t.querySelector(".edit-input"),n=s.value.trim();if(!n&&!n.includes("https://"))return;u[l]=n,i.textContent=n,i.href=n,s.style.display="none",i.style.display="inline",e.target.textContent="Edit",e.target.classList.remove("save"),e.target.classList.add("edit")}}),t.placeholder="URL";
+//# sourceMappingURL=cw-json-two.dfaa8400.js.map
